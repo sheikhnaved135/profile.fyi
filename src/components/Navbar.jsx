@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/profile.fyi.jpeg";
+import logo2 from "../assets/logo-2.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
@@ -17,7 +18,7 @@ const Navbar = ({ children }) => {
       <div className="flex justify-between items-center bg-gray-500 w-full h-20 shadow-md">
         <div className="flex items-center ml-5">
           <NavLink to={"/"} className="text-red-500">
-            <img src={logo} alt="logo" className="h-12 w-12" />
+            <img src={logo2} alt="logo" height={150} width={150} />
           </NavLink>
         </div>
         <div className="flex gap-12 items-center pr-8">

@@ -46,7 +46,7 @@ const Cart = () => {
             <h1 className="text-2xl font-bold">Cart is empty</h1>
             <button
               className="px-6 py-3 bg-green-300 font-semibold text-lg cursor-pointer rounded-md"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/products")}
             >
               Buy Now
             </button>
@@ -55,11 +55,13 @@ const Cart = () => {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
               width: "100%",
+              flexWrap: "wrap",
+              alignItems: "center",
+              margin: "20px",
             }}
           >
-            <div className="flex m-3 flex-wrap justify-center ">
+            <div className="flex m-2 flex-wrap justify-center ">
               {cart?.map((item) => (
                 <div className="m-6 h-[60vh]" key={item.id}>
                   <CartCard
@@ -73,23 +75,29 @@ const Cart = () => {
               ))}
             </div>
             <div
-              className="w-full  max-w-sm mt-10 p-5 border rounded-md shadow-md bg-gray-50 mr-6"
-              style={{ height: "80%" }}
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
-              <h2 className="text-xl font-semibold text-center bg-yellow-200 p-3 rounded-md ">
-                Order Summary
-              </h2>
-              <div className="flex justify-between mt-5">
-                <div className="text-xl">
-                  <h3>Subtotal</h3>
-                  <h3>Total Items</h3>
-                  {/* <h3>Discount</h3> */}
-                  <h3 className="mt-12">Total</h3>
-                </div>
-                <div className="text-xl">
-                  <h3>₹{totalPrice}</h3>
-                  <h3>{totalQuant}</h3>
-                  <h3 className="mt-12">₹{totalPrice}</h3>
+              <div className="w-full max-w-sm mt-10 p-5 border rounded-md shadow-md bg-gray-50 mr-6">
+                <h2 className="text-xl font-semibold text-center bg-yellow-200 p-3 rounded-md ">
+                  Order Summary
+                </h2>
+                <div className="flex justify-between mt-5">
+                  <div className="text-xl">
+                    <h3>Subtotal</h3>
+                    <h3>Total Items</h3>
+                    {/* <h3>Discount</h3> */}
+                    <h3 className="mt-12">Total</h3>
+                  </div>
+                  <div className="text-xl">
+                    <h3>₹{totalPrice}</h3>
+                    <h3>{totalQuant}</h3>
+                    <h3 className="mt-12">₹{totalPrice}</h3>
+                  </div>
                 </div>
               </div>
             </div>
@@ -97,15 +105,16 @@ const Cart = () => {
         )}
       </div>
       {cart.length > 0 && (
-        <div className="flex flex-col items-center gap-5 mt-10">
+        <div className="flex flex-col items-center gap-5 mt-20 mb-10">
           <button
-            className="bg-green-300 px-6 py-3 text-lg cursor-pointer w-1/3 rounded-full border"
+            className="bg-green-300 px-6 py-3 text-lg cursor-pointer  rounded-full border"
+            style={{ width: "50vh" }}
             onClick={() => {
               toast.success("Order placed");
               localStorage.removeItem("cart");
               setTimeout(() => {
-                location.reload();
-              }, 1000);
+                setCart([]);
+              }, 500);
             }}
           >
             Pay

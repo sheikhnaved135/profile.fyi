@@ -17,7 +17,7 @@ const Home2 = () => {
           width={"100%"}
           height={"100%"}
           //   style={{ objectFit: "contain" }}
-          //   style={{ objectFit: "contain" }}
+          style={{ objectFit: "contain" }}
           src={ecom}
           alt="image"
         />
